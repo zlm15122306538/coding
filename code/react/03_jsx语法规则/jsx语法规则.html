@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="test"></div>
+  <script src="../js依赖/react.development.js"></script>
+  <script src="../js依赖/react-dom.development.js"></script>
+  <script src="../js依赖/babel.min.js"></script>
+  <script type="text/babel">
+    const title = 'react'
+    const content = 'hello react !'
+    /* 
+      jsx语法规则:
+      1.不要用引号包裹
+      2.标签中使用jsx表达式要使用{}
+      3.类名使用className
+      4.内联样式使用style={{}},key命名使用小驼峰
+      5.只有一个根标签
+      6.标签必须闭合
+      7.标签首字母
+        ①若小写字母开头,则将标签转换为HTML中同名元素
+        ②若大写字母开头,react渲染对应的组件
+    */
+    const vm = (
+      <h1 id={title}>
+        <span className='content' style={{color:'red',backgroundColor:'pink'}}>{content}</span>
+      </h1>
+    )
+    ReactDOM.render(vm,document.getElementById('test'))
+  </script>
+</body>
+</html>
