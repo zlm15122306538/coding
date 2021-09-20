@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="test"></div>
+  <script src="../js依赖/react.development.js"></script>
+  <script src="../js依赖/react-dom.development.js"></script>
+  <script src="../js依赖/babel.min.js"></script>
+  <script type="text/babel">
+    class Login extends React.Component {
+      submitInfo = (event)=>{
+        event.preventDefault()
+        // 非受控组件，表单中的数据现用现取
+        const {username,password} = this
+        alert(`username：${username.value},password：${password.value}`)
+      }
+      render(){
+        return(
+          <form action="www.baidu.com" onSubmit={this.submitInfo}>
+            <input ref = { currentNode => this.username = currentNode } placeholder='用户名' type="text" name='username'/>
+            <input ref = { currentNode => this.password = currentNode} placeholder='密码' type="password" name='password'/>
+            <button>提交</button>
+          </form>
+        )
+      }
+    }
+    ReactDOM.render(<Login/>,document.getElementById('test'))
+  </script>
+</body>
+</html>

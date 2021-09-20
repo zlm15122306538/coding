@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="test"></div>
+  <script src="../js依赖/react.development.js"></script>
+  <script src="../js依赖/react-dom.development.js"></script>
+  <script src="../js依赖/babel.min.js"></script>
+  <script type="text/babel">
+    class MyComponent extends React.Component {
+      constructor(props){
+        // 构造器初始化实例时调用一次
+        super(props)
+        this.state = {isHot: true}
+        // 使用bind改变this指向
+        this.changeWeather = this.changeWeather.bind(this)
+      }
+      changeWeather(){
+        // changeWeather()放在MyComponent的原型对象上，供实例使用，通过MyComponent实例调用时，changeWeather中的this就是MyComponent实例对象
+        // 由于changeWeather作为onClick的回调，是直接调用，所以changeWeather的this为undefined
+        console.log(this);  // this指向undefined
+        const {isHot} = this.state
+        // setState(),React.Component原型上的方法
+        // setState更改对象的动作为合并
+        this.setState({isHot: !isHot})
+      }
+      render(){
+        // render函数调用1+n次，初始化调用一次，状态更新时调用
+        console.log(this);
+        const {isHot} = this.state
+        return <h1 onClick = {this.changeWeather}>今天天气很{isHot ? '炎热' : '凉爽'}</h1>
+      }
+    }
+    ReactDOM.render(<MyComponent/>,document.getElementById('test'))
+  </script>
+</body>
+</html>

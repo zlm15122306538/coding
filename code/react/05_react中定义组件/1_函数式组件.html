@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="test"></div>
+  <script src="../js依赖/react.development.js"></script>
+  <script src="../js依赖/react-dom.development.js"></script>
+  <script src="../js依赖/babel.min.js"></script>
+  <script type="text/babel">
+    // 创建函数式组件
+    function MyComponent() {
+      console.log(this);  // this指向undefined，babel开启严格模式
+      return (
+        <h1>函数式组件</h1>
+      )
+    }
+    // 渲染组件
+    ReactDOM.render(<MyComponent/>,document.getElementById('test'))
+  </script>
+</body>
+</html>

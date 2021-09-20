@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="test"></div>
+  <script src="../js依赖/react.development.js"></script>
+  <script src="../js依赖/react-dom.development.js"></script>
+  <script src="../js依赖/babel.min.js"></script>
+  <script src="../js依赖/prop-types.js"></script>
+  <script type="text/babel">
+    class Person extends React.Component {
+      // 对标签属性进行类型、必要性限制
+      // 使用static将属性加在类身上
+      static propTypes = {
+        name: PropTypes.string.isRequired,
+        gender: PropTypes.string,
+        age: PropTypes.number
+      }
+      // 指定标签属性默认值
+      static defaultProps = {
+        gender: '男',
+        age: 18
+      }
+      render(){
+        return(
+          <ul>
+            <li>姓名：{this.props.name}</li>
+            <li>年龄：{this.props.age}</li>
+            <li>性别：{this.props.gender}</li>
+          </ul>
+        )
+      }
+    }
+    ReactDOM.render(<Person name='张三' />,document.getElementById('test'))
+  </script>
+</body>
+</html>

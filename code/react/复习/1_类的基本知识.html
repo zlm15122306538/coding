@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class Person {
+      // 构造方法
+      constructor(name,age){
+        // 构造器中的this指向类的实例对象
+        this.name = name
+        this.age = age
+      }
+      // 一般方法,speak方法放在类的原型对象上，供实例使用
+      speak(){
+        // this指向调用speak方法的Person实例
+        console.log(this);
+        console.log(`I am ${this.name},I'm ${this.age}`);
+      }
+    }
+    /* const p1 = new Person('tom',18)
+    const p2 = new Person('jack',19)
+    console.log(p1);
+    console.log(p2);
+    p1.speak()
+    p2.speak() */
+    class Student extends Person {
+      constructor(name,age,grade){
+        super(name,age)
+        this.grade = grade
+      }
+      // 重写从父类继承过来的方法
+      speak(){
+        console.log(`I am ${this.name},I'm ${this.age},I'm ${this.grade}`);
+      }
+    }
+    const s1 = new Student('bob',19,'大一')
+    console.log(s1);
+    s1.speak()
+  </script>
+</body>
+</html>
