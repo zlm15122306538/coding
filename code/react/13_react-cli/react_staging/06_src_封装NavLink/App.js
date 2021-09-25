@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Route,Redirect} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import About from './pages/About'
 import Home from './pages/Home'
 import Header from './components/Header'
@@ -37,7 +37,6 @@ export default class App extends Component {
                   {/* 注册路由 */}
                   <Route path='/about' component={About}/>
                   <Route path='/home' component={Home}/>
-                  <Redirect to='/home'/>
                 </div>
               </div>
             </div>
